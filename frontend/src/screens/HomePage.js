@@ -1,7 +1,24 @@
 import React,{useState} from 'react'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 const HomePage = () => {
-    const [showModal, setShowModal] = useState(false)
+    const [login, setLogin] = useState(false)
+    const [data, setData] = useState({})
+    const [picture, setPicture] = useState('')
+
+    const responseFacebook = (response) => {
+        console.log(response)
+        setData(response);
+
+        setPicture(response.picture.data.url);
+        if (response.accessToken) {
+            setLogin(true);
+        } 
+        else {
+            setLogin(false);
+        }
+        
+    }
     return (
         <div className="flex flex-col w-screen mt-8">
             {/* <div className="w-full justify-between flex">
@@ -17,7 +34,18 @@ const HomePage = () => {
                 <h3 className="font-bold text-white mb-8 text-xl text-center mb-2"> By Clicking Log In, you agree to our terms. Learn how we proecess your data in our Privacy Policy and Cookie Policy</h3>
                 <div className="flex flex-col text-white items-center">
                     <button className="border-white border-4 w-2/3 py-2 text-white rounded-full text-xl font-bold mb-4"><div className="flex pl-8"><img src="https://img.favpng.com/15/12/25/google-logo-google-adwords-g-suite-google-account-png-favpng-ZPDpvjf5PW8XaAnw6V9PQkcut.jpg" className="h-12 w-12 rounded-full" alt="google" /> <p className="ml-4 self-center">LOG IN WITH GOOGLE</p> </div></button>
-                    <button className="border-white border-4 w-2/3 py-2 text-white rounded-full text-xl font-bold mb-4"><div className="flex pl-8"><img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" className="h-12 w-12 rounded-full" alt="google" /> <p className="ml-4 self-center">LOG IN WITH FACEBOOK</p> </div></button>
+                    <FacebookLogin 
+                        appId="218984373289163"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        scope="public_profile,user_friends"
+                        callback={responseFacebook}
+                        icon="fa-facebook"
+                        render = {(renderProps) => (
+                            <button onClick={renderProps.onClick} className="border-white border-4 w-2/3 py-2 text-white rounded-full text-xl font-bold mb-4"><div className="flex pl-8"><img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" className="h-12 w-12 rounded-full" alt="google" /> <p className="ml-4 self-center">LOG IN WITH FACEBOOK</p> </div></button>
+                        )}
+                        />
+                    {/* <button className="border-white border-4 w-2/3 py-2 text-white rounded-full text-xl font-bold mb-4"><div className="flex pl-8"><img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" className="h-12 w-12 rounded-full" alt="google" /> <p className="ml-4 self-center">LOG IN WITH FACEBOOK</p> </div></button> */}
                     <h1 className="font-bold text-lg"> Trouble Logging In?</h1>            
                 </div>
             </div>
