@@ -1,10 +1,11 @@
 import React from "react";
 import HomePage from './screens/HomePage'
+import FeatureDisplay from './screens/FeatureDisplay'
 
 function App() {
   return (
     <div>
-      <HomePage />
+      <FeatureDisplay />
     </div>
   );
 }

@@ -6,6 +6,9 @@ module.exports = {
         colors:{
           schemeColor: '#FF7F41',
         },
+        minWidth:{
+          '1/3':'33%'
+        }
       },
     },
     variants: {
