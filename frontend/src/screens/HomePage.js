@@ -29,7 +29,10 @@ const HomePage = () => {
                     <button onClick={() => setShowModal(true)} className="outline-none text-white py-2 px-6 rounded-xl bg-schemeColor font-bold text-xl">Login</button>
                 </div>
             </div> */}
-            <div className="bg-schemeColor w-full md:w-2/3 h-full rounded-lg self-center py-10 px-2 lg:px-12">
+            {/* <div class="">
+
+            </div> */}
+            <div className="bg-schemeColor w-1/3 h-full rounded-3xl self-center py-10 px-12 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
                 <h1 className="text-white font-bold mb-8 text-center font-sans text-3xl">Get Started</h1>
                 <h3 className="font-bold text-white mb-8 text-xl text-center mb-2"> By Clicking Log In, you agree to our terms. Learn how we proecess your data in our Privacy Policy and Cookie Policy</h3>
                 <div className="flex flex-col xl:w-2/5 text-white self-center items-center">
